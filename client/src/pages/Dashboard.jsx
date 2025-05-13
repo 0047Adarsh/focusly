@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FaUserCircle, FaTasks, FaChartBar, FaCog, FaBars, FaBell } from "react-icons/fa"; // Hamburger and other icons
+import Sidebar from "../components/Sidebar"; // Import the Sidebar
 import "../styles/Dashboard.css";
+import { FaBell } from "react-icons/fa";
 
 function Dashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -11,39 +12,7 @@ function Dashboard() {
 
   return (
     <div className={`dashboard ${sidebarCollapsed ? "sidebar-collapsed" : ""}`}>
-      <div className={`sidebar ${sidebarCollapsed ? "collapsed" : ""}`}>
-        <div className="logo">
-          {sidebarCollapsed ? "F" : "Focusly"}
-        </div>
-        <button className="hamburger" onClick={toggleSidebar}>
-          <FaBars />
-        </button>
-        {/* <ul>
-          <li><FaUserCircle /> Profile</li>
-          <li><FaTasks /> Tasks</li>
-          <li><FaChartBar /> Analytics</li>
-          <li><FaCog /> Settings</li>
-        </ul> */}
-        <ul>
-        <li>
-          <FaUserCircle />
-          {!sidebarCollapsed && <span>Profile</span>}
-        </li>
-        <li>
-          <FaTasks />
-          {!sidebarCollapsed && <span>Tasks</span>}
-        </li>
-        <li>
-          <FaChartBar />
-          {!sidebarCollapsed && <span>Analytics</span>}
-        </li>
-        <li>
-          <FaCog />
-          {!sidebarCollapsed && <span>Settings</span>}
-        </li>
-      </ul>
-
-      </div>
+      <Sidebar collapsed={sidebarCollapsed} toggleSidebar={toggleSidebar} />
 
       <div className="main-content">
         <header className="header">
